@@ -1,6 +1,9 @@
 package math.geometry;
 
-public sealed class Polyline implements LengthMeasurable permits ClosedPolyline
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
+public sealed class Polyline implements LengthMeasurable, Polylinable permits ClosedPolyline
 {
     protected Point2D[] points;
 
@@ -28,6 +31,10 @@ public sealed class Polyline implements LengthMeasurable permits ClosedPolyline
         return lenth;
     }
 
+    public Point2D[] getPoints() {
+        return Arrays.copyOf(points, points.length);
+    }
+
     @Override
     public String toString()
     {
@@ -40,5 +47,10 @@ public sealed class Polyline implements LengthMeasurable permits ClosedPolyline
         }
         resultStr.append("]");
         return resultStr.toString();
+    }
+
+    @Override
+    public Polyline getPolyline() {
+        return new Polyline(this.points);
     }
 }

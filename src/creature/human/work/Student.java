@@ -4,17 +4,19 @@ import java.util.Arrays;
 
 public class Student
 {
-    public String name;
+    private String name;
     private int[] marks;
+    private MarksRule marksRule;
 
     public Student(String name)
     {
         this.name = name;
     }
 
-    public Student(String name, int... marks)
+    public Student(String name, MarksRule marksRule, int... marks)
     {
         this(name);
+        this.marksRule = marksRule;
         setMarks(marks);
     }
 
@@ -23,13 +25,16 @@ public class Student
     }
 
     public void setMarks(int[] marks) {
-        boolean found = true;
-        for (int mark : marks) {
-            if (mark < 2 || mark > 5) {
-                throw new IllegalArgumentException("Marks must be in range [2, 5]");
+        if (marksRule == null) {
+            this.marks = marks;
+        } else {
+            for (int mark : marks) {
+                if (!marksRule.isValid(mark)) {
+                    throw new IllegalArgumentException("Marks must follow the rule");
+                }
             }
+            this.marks = marks;
         }
-        this.marks = marks;
     }
 
     public float avg() {

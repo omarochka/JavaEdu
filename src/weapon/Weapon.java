@@ -1,6 +1,6 @@
 package weapon;
 
-public abstract class Weapon
+public abstract class Weapon implements Cloneable
 {
     final int maxAmmo;
     protected int ammo;
@@ -42,5 +42,15 @@ public abstract class Weapon
 
     public boolean isLoad(){
         return getAmmo() != 0;
+    }
+
+
+    @Override
+    public Weapon clone() {
+        try {
+            return (Weapon) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 }

@@ -1,6 +1,8 @@
 import creature.Bird;
 import creature.Meowable;
 import math.geometry.LengthMeasurable;
+import math.geometry.Polylinable;
+import math.geometry.Polyline;
 import math.geometry.figure.Figure;
 
 public final class PolymorphismUtils
@@ -39,5 +41,13 @@ public final class PolymorphismUtils
             sumRes += value.getLength();
         }
         return sumRes;
+    }
+
+    static Polyline polylineUnion(Polylinable... polyline){
+        Polyline tempPolyline = new Polyline();
+        for (Polylinable value : polyline) {
+            tempPolyline.addPoints(value.getPolyline().getPoints());
+        }
+        return tempPolyline;
     }
 }

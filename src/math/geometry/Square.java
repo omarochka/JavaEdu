@@ -1,6 +1,6 @@
 package math.geometry;
 
-public class Square
+public class Square implements Polylinable
 {
     private final Point2D upperLeftCorner;
     private int sideLength;
