@@ -1,5 +1,7 @@
 package markova.creature.human.work;
 
+import markova.exceptions.IncorrectMarksException;
+
 import java.util.Arrays;
 
 public class Student
@@ -30,7 +32,7 @@ public class Student
         } else {
             for (int mark : marks) {
                 if (!marksRule.isValid(mark)) {
-                    throw new IllegalArgumentException("Marks must follow the rule");
+                    throw new IncorrectMarksException(name);
                 }
             }
             this.marks = marks;

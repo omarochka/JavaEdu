@@ -1,5 +1,10 @@
 package markova.main;
 
+import markova.Connection;
+import markova.creature.human.work.Student;
+import markova.creature.human.work.ZeroOrOneMarksRule;
+import markova.exceptions.NetworkConnectionException;
+import markova.exceptions.UsingClosedResourceException;
 import markova.math.geometry.Point2D;
 import markova.weapon.Gun;
 import markova.weapon.Weapon;
