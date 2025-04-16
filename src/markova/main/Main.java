@@ -1,6 +1,8 @@
 package markova.main;
 
 import markova.Connection;
+import markova.Utils;
+import markova.creature.human.work.EvenNumberMarksRule;
 import markova.creature.human.work.Student;
 import markova.creature.human.work.ZeroOrOneMarksRule;
 import markova.exceptions.NetworkConnectionException;
@@ -10,13 +12,16 @@ import markova.weapon.Gun;
 import markova.weapon.Weapon;
 
 import java.sql.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+
+import static markova.Utils.convert;
 
 public class Main
 {
     public static void main(String[] args) throws Exception
     {
-
 
 //        Timer timer = new Timer(); // Creating a Timer object from the timer class
 //

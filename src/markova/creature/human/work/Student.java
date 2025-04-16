@@ -12,6 +12,7 @@ public class Student
 
     public Student(String name)
     {
+        if(name == null) throw new IllegalArgumentException("Name don't be null");
         this.name = name;
     }
 
@@ -26,17 +27,33 @@ public class Student
         return Arrays.copyOf(marks, marks.length);
     }
 
-    public void setMarks(int[] marks) {
-        if (marksRule == null) {
-            this.marks = marks;
-        } else {
+    public void setMarks(int... marks) {
+        if (marks == null || marks.length == 0) throw new IllegalArgumentException("Need to write marks");
+        if (marksRule != null) {
             for (int mark : marks) {
                 if (!marksRule.isValid(mark)) {
                     throw new IncorrectMarksException(name);
                 }
             }
-            this.marks = marks;
         }
+        this.marks = marks;
+    }
+
+    public void addMark(int mark){
+        if (marksRule != null) {
+            if (!marksRule.isValid(mark)) {
+                throw new IncorrectMarksException(name);
+            }
+        }
+        int[] tempMarks;
+        if (marks == null) {
+            tempMarks = new int[1];
+        }
+        else {
+            tempMarks = Arrays.copyOf(marks, marks.length + 1);
+        }
+        tempMarks[tempMarks.length-1] = mark;
+        marks = tempMarks;
     }
 
     public float avg() {
@@ -53,12 +70,14 @@ public class Student
     public String toString()
     {
         StringBuilder resultStr = new StringBuilder(name);
-        resultStr.append(": ");
-        for (int i = 0; i < marks.length; i++)
-        {
-            resultStr.append(marks[i]).append(",");
-            if (i + 1 == marks.length)
-                resultStr.deleteCharAt(resultStr.length() - 1);
+        if(marks != null && marks.length != 0){
+            resultStr.append(": ");
+            for (int i = 0; i < marks.length; i++)
+            {
+                resultStr.append(marks[i]).append(",");
+                if (i + 1 == marks.length)
+                    resultStr.deleteCharAt(resultStr.length() - 1);
+            }
         }
         return resultStr.toString();
     }

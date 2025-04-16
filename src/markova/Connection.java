@@ -3,9 +3,10 @@ package markova;
 import markova.exceptions.NetworkConnectionException;
 import markova.exceptions.UsingClosedResourceException;
 
+import java.io.Closeable;
 import java.util.Random;
 
-public class Connection
+public class Connection implements Closeable
 {
     String address;
     Boolean status;
@@ -20,6 +21,7 @@ public class Connection
         System.out.println("Connection open: " + address);
     }
 
+    @Override
     public void close(){
         status = false;
         System.out.println("Connection closed");
@@ -35,6 +37,6 @@ public class Connection
 
     @Override
     public String toString() {
-        return "Address: " + address + "/nStatus: " + status + "/n";
+        return "Address: " + address + "\nStatus: " + status + "\n";
     }
 }
