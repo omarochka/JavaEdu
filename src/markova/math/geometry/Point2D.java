@@ -1,5 +1,7 @@
 package markova.math.geometry;
 
+import java.util.Objects;
+
 public sealed class Point2D permits Point3D
 {
     public int x;
@@ -15,5 +17,18 @@ public sealed class Point2D permits Point3D
     public String toString()
     {
         return String.format("{%d;%d}", this.x, this.y);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || this.getClass() != o.getClass()) return false;
+        Point2D point2D = (Point2D) o;
+        return this.x == point2D.x && this.y == point2D.y;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y);
     }
 }

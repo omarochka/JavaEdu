@@ -1,6 +1,7 @@
 package markova.math.geometry;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 public sealed class Polyline implements LengthMeasurable, Polylinable permits ClosedPolyline
 {
@@ -8,7 +9,11 @@ public sealed class Polyline implements LengthMeasurable, Polylinable permits Cl
 
     public Polyline(Point2D... point)
     {
-        points = point;
+        setPoints(point);
+    }
+
+    public void setPoints(Point2D... points) {
+        this.points = points;
     }
 
     public void addArrayOfPoints(Point2D[] points){
@@ -51,5 +56,18 @@ public sealed class Polyline implements LengthMeasurable, Polylinable permits Cl
     @Override
     public Polyline getPolyline() {
         return new Polyline(this.points);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Polyline polyline)) return false;
+        Polyline p = (Polyline) o;
+        return Arrays.equals(this.getPoints(), p.getPoints());
+    }
+
+    @Override
+    public int hashCode() {
+        return Arrays.hashCode(getPoints());
     }
 }

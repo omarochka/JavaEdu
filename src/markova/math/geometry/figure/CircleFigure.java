@@ -10,6 +10,6 @@ public class CircleFigure extends Figure
 
     @Override
     public double findArea() {
-        return Math.PI * Math.pow(radius, 2);
+        return Math.PI * radius * radius;
     }
 }

@@ -1,5 +1,7 @@
 package markova.math.geometry;
 
+import java.util.Objects;
+
 public class StraightLine implements LengthMeasurable
 {
     private Point2D originCoordinate;
@@ -47,5 +49,24 @@ public class StraightLine implements LengthMeasurable
     {
         double len = Math.sqrt(StraightLine.pow(finalCoordinate.x - originCoordinate.x) + StraightLine.pow(finalCoordinate.y - originCoordinate.y));
         return (int)len;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        StraightLine that = (StraightLine) o;
+        boolean condition1 = this.originCoordinate.equals(that.finalCoordinate)
+                && this.finalCoordinate.equals(that.originCoordinate);
+        boolean condition2 = this.originCoordinate.equals(that.originCoordinate)
+                && this.finalCoordinate.equals(that.finalCoordinate);
+        return condition1 || condition2;
+    }
+
+    @Override
+    public int hashCode() {
+        int hashCode1 = Objects.hash(originCoordinate, finalCoordinate);
+        int hashCode2 = Objects.hash(finalCoordinate, originCoordinate);
+        return Objects.hash(hashCode1 + hashCode2);
     }
 }

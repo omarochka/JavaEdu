@@ -62,8 +62,8 @@ public class Student
         return (float)Arrays.stream(marks).sum() / marks.length;
     }
 
-    public boolean isExcellent(){
-        return avg() == 5; //cool
+    public boolean isExcellent(int compareMark){
+        return avg() == compareMark;
     }
 
     @Override

@@ -1,5 +1,7 @@
 package markova.math;
 
+import java.util.Objects;
+
 public final class Fraction extends Number
 {
     final int numerator;
@@ -78,16 +80,29 @@ public final class Fraction extends Number
 
     @Override
     public long longValue() {
-        return (long)(numerator / denominator);
+        return (long)intValue();
     }
 
     @Override
     public float floatValue() {
-        return (float)(numerator / denominator);
+        return (float)doubleValue();
     }
 
     @Override
     public double doubleValue() {
         return (double)(numerator / denominator);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || this.getClass() != o.getClass()) return false;
+        Fraction fraction = (Fraction) o;
+        return this.numerator == fraction.numerator && this.denominator == fraction.denominator;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(numerator, denominator);
     }
 }
