@@ -3,6 +3,7 @@ package markova.creature.human.work;
 import markova.exceptions.IncorrectMarksException;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 public class Student
 {
@@ -80,5 +81,18 @@ public class Student
             }
         }
         return resultStr.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || this.getClass() != o.getClass()) return false;
+        Student student = (Student) o;
+        return this.name.equals(student.name) && this.avg() == student.avg();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, avg());
     }
 }

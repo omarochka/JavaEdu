@@ -2,6 +2,7 @@ package markova.geography;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public sealed class City permits CityTwoWayRoad
 {
@@ -72,5 +73,18 @@ public sealed class City permits CityTwoWayRoad
         }
         resultStr.append("]");
         return resultStr.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof City city)) return false;
+        City c = (City) o;
+        return this.paths.equals(c.paths);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(paths);
     }
 }

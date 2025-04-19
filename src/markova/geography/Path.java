@@ -1,5 +1,7 @@
 package markova.geography;
 
+import java.util.Objects;
+
 public class Path
 {
     City cityName;
@@ -16,9 +18,16 @@ public class Path
         return String.format("%s: %d", cityName.name, cost);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || this.getClass() != o.getClass()) return false;
+        Path path = (Path) o;
+        return this.cost == path.cost && this.cityName.name.equals(path.cityName.name);
+    }
 
-//    @Override
-//    public boolean equals(Object other){return true;}
-//    @Override
-//    public int hashCode(){return 0;}
+    @Override
+    public int hashCode() {
+        return Objects.hash(cityName.name, cost);
+    }
 }
