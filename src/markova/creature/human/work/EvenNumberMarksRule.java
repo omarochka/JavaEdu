@@ -6,7 +6,8 @@ public class EvenNumberMarksRule implements MarksRule{
         return mark % 2 == 0;
     }
 
-    public EvenNumberMarksRule(){
-
+    @Override
+    public int excelentMark() {
+        return 0;
     }
 }

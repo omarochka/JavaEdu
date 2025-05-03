@@ -14,11 +14,4 @@ public final class ClosedPolyline extends Polyline
         tempPoints[tempPoints.length - 1] = points[0];
         this.points = tempPoints;
     }
-
-    public int getLength(){
-        int lenth = super.getLength();
-        lenth += new StraightLine(points[points.length - 1], points[0]).getLength();
-        return lenth;
-    }
-
 }

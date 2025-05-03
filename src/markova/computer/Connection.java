@@ -1,4 +1,4 @@
-package markova;
+package markova.computer;
 
 import markova.exceptions.NetworkConnectionException;
 import markova.exceptions.UsingClosedResourceException;

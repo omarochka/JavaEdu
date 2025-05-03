@@ -2,36 +2,23 @@ package markova.math.geometry;
 
 import java.util.Objects;
 
-public class StraightLine implements LengthMeasurable
+public class StraightLine<T extends Point2D> implements LengthMeasurable, Cloneable
 {
-    private Point2D originCoordinate;
-    private Point2D finalCoordinate;
+    private final T originCoordinate;
+    private final T finalCoordinate;
 
-    public StraightLine(Point2D originCoordinate, Point2D finalCoordinate)
+    public StraightLine(T originCoordinate, T finalCoordinate)
     {
-        this(originCoordinate.x, originCoordinate.y, finalCoordinate.x, finalCoordinate.y);
-    }
-
-    public StraightLine(int x1, int y1, int x2, int y2)
-    {
-        setOriginCoordinate(new Point2D(x1, y1));
-        setFinalCoordinate(new Point2D(x2, y2));
-    }
-
-    public void setOriginCoordinate(Point2D originCoordinate) {
         this.originCoordinate = originCoordinate;
-    }
-
-    public void setFinalCoordinate(Point2D finalCoordinate) {
         this.finalCoordinate = finalCoordinate;
     }
 
-    public Point2D getOriginCoordinate() {
-        return new Point2D(originCoordinate.x, originCoordinate.y);
+    public T getOriginCoordinate() {
+        return originCoordinate;
     }
 
-    public Point2D getFinalCoordinate() {
-        return new Point2D(finalCoordinate.x, finalCoordinate.y);
+    public T getFinalCoordinate() {
+        return finalCoordinate;
     }
 
     @Override
@@ -55,7 +42,7 @@ public class StraightLine implements LengthMeasurable
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        StraightLine that = (StraightLine) o;
+        StraightLine<?> that = (StraightLine<?>) o;
         boolean condition1 = this.originCoordinate.equals(that.finalCoordinate)
                 && this.finalCoordinate.equals(that.originCoordinate);
         boolean condition2 = this.originCoordinate.equals(that.originCoordinate)
@@ -68,5 +55,10 @@ public class StraightLine implements LengthMeasurable
         int hashCode1 = Objects.hash(originCoordinate, finalCoordinate);
         int hashCode2 = Objects.hash(finalCoordinate, originCoordinate);
         return Objects.hash(hashCode1 + hashCode2);
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 }

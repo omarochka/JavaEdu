@@ -1,11 +1,12 @@
 package markova.creature.human.work;
 
 import markova.exceptions.IncorrectMarksException;
+import markova.generalInterfaces.Comparable;
 
 import java.util.Arrays;
 import java.util.Objects;
 
-public class Student
+public class Student implements Comparable<Student>
 {
     private String name;
     private int[] marks;
@@ -63,8 +64,8 @@ public class Student
         return (float)Arrays.stream(marks).sum() / marks.length;
     }
 
-    public boolean isExcellent(int compareMark){
-        return avg() == compareMark;
+    public boolean isExcellent(){
+        return Arrays.stream(marks).allMatch(x -> x == marksRule.excelentMark());
     }
 
     @Override
@@ -94,5 +95,10 @@ public class Student
     @Override
     public int hashCode() {
         return Objects.hash(name, avg());
+    }
+
+    @Override
+    public int compare(Student object) {
+        return Float.compare(this.avg(), object.avg());
     }
 }

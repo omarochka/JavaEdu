@@ -2,7 +2,7 @@ package markova.math;
 
 import java.util.Objects;
 
-public final class Fraction extends Number
+public final class Fraction extends Number implements Cloneable
 {
     final int numerator;
     final int denominator;
@@ -104,5 +104,10 @@ public final class Fraction extends Number
     @Override
     public int hashCode() {
         return Objects.hash(numerator, denominator);
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 }

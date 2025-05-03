@@ -12,6 +12,14 @@ public final class Point3D extends Point2D
     }
 
     @Override
+    public String toString() {
+        StringBuilder temp = new StringBuilder(super.toString());
+        temp.deleteCharAt(temp.length() - 1);
+        temp.append(";").append(z).append("}");
+        return temp.toString();
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || this.getClass() != o.getClass()) return false;

@@ -1,14 +1,16 @@
 package markova;
 
+import markova.computer.Connection;
 import markova.creature.Bird;
 import markova.creature.Meowable;
-import markova.creature.human.work.EvenNumberMarksRule;
 import markova.creature.human.work.Student;
 import markova.exceptions.IncorrectMarksException;
 import markova.math.geometry.LengthMeasurable;
 import markova.math.geometry.Polylinable;
 import markova.math.geometry.Polyline;
 import markova.math.geometry.figure.Figure;
+import markova.storeItems.Box;
+import markova.storeItems.Storage;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -162,5 +164,20 @@ public final class Utils
             }
         }
         return students;
+    }
+
+    public static <T> void getItemIntoBox(Box<T> box) {
+        T value = box.getItem();
+
+        if (value != null) {
+            System.out.println("Item: " + value);
+        } else {
+            System.out.println("Box is empty.");
+        }
+    }
+
+    public static <T> void getItemIntoStorage(Storage<T> storage) {
+        T value = storage.getItem();
+        System.out.println("Значение из хранилища: " + value);
     }
 }

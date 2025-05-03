@@ -2,7 +2,7 @@ package markova.math.geometry;
 
 import java.util.Objects;
 
-public sealed class Point2D permits Point3D
+public sealed class Point2D implements Cloneable permits Point3D
 {
     public int x;
     public int y;
@@ -30,5 +30,10 @@ public sealed class Point2D permits Point3D
     @Override
     public int hashCode() {
         return Objects.hash(x, y);
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 }
