@@ -5,9 +5,7 @@ import markova.creature.Bird;
 import markova.creature.Meowable;
 import markova.creature.human.work.Student;
 import markova.exceptions.IncorrectMarksException;
-import markova.math.geometry.LengthMeasurable;
-import markova.math.geometry.Polylinable;
-import markova.math.geometry.Polyline;
+import markova.math.geometry.*;
 import markova.math.geometry.figure.Figure;
 import markova.storeItems.Box;
 import markova.storeItems.Storage;
@@ -179,5 +177,31 @@ public final class Utils
     public static <T> void getItemIntoStorage(Storage<T> storage) {
         T value = storage.getItem();
         System.out.println("Значение из хранилища: " + value);
+    }
+
+    public static void moveTheLine(StraightLine<?> line){
+        line.getOriginCoordinate().x += 10;
+    }
+
+    @SafeVarargs
+    public static double maxInBox(Box<? extends Number>... box){
+        double maxTemp = box[0].getItem().doubleValue();
+        for (int i = 1; i < box.length; i++){
+            double tempBoxValue = box[i].getItem().doubleValue();
+            if (maxTemp < tempBoxValue)
+                maxTemp = tempBoxValue;
+        }
+        return maxTemp;
+    }
+
+    public static void fillBoxWith3DPoint(Box<? super Point3D> box) {
+        Point3D point = new Point3D(new Random().nextInt(100), new Random().nextInt(100), new Random().nextInt(100));
+            box.setItem(point);
+    }
+
+    public static void fillList(List<? super Integer> list){
+        for (int i = 1; i <= 100; i++) {
+            list.add(i);
+        }
     }
 }
