@@ -27,7 +27,7 @@ public class Connection implements Closeable
         System.out.println("Connection closed");
     }
 
-    public String getData() throws Exception{
+    public String getData() throws NetworkConnectionException{
         if(!status) throw new UsingClosedResourceException();
         if (new Random().nextInt(2) == 1){
             return "Test connection";

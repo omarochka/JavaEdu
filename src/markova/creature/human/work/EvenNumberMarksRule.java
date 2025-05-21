@@ -10,4 +10,13 @@ public class EvenNumberMarksRule implements MarksRule{
     public int excelentMark() {
         return 0;
     }
+
+    @Override
+    public EvenNumberMarksRule clone() {
+        try {
+            return (EvenNumberMarksRule) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

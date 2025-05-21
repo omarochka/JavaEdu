@@ -6,7 +6,7 @@ import markova.generalInterfaces.Comparable;
 import java.util.Arrays;
 import java.util.Objects;
 
-public class Student implements Comparable<Student>
+public class Student implements Comparable<Student>, Cloneable
 {
     private String name;
     private int[] marks;
@@ -89,16 +89,28 @@ public class Student implements Comparable<Student>
         if (this == o) return true;
         if (o == null || this.getClass() != o.getClass()) return false;
         Student student = (Student) o;
-        return this.name.equals(student.name) && this.avg() == student.avg();
+        return this.name.equals(student.name) && Arrays.equals(this.marks, student.marks);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, avg());
+        return Objects.hash(name, Arrays.hashCode(marks));
     }
 
     @Override
     public int compare(Student object) {
         return Float.compare(this.avg(), object.avg());
+    }
+
+    @Override
+    public Student clone() throws CloneNotSupportedException {
+        Student s = (Student) super.clone();
+        s.marks = Arrays.copyOf(this.marks, this.marks.length);
+
+        if (this.marksRule != null) {
+            s.marksRule = this.marksRule.clone();
+        }
+
+        return s;
     }
 }

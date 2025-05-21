@@ -163,45 +163,4 @@ public final class Utils
         }
         return students;
     }
-
-    public static <T> void getItemIntoBox(Box<T> box) {
-        T value = box.getItem();
-
-        if (value != null) {
-            System.out.println("Item: " + value);
-        } else {
-            System.out.println("Box is empty.");
-        }
-    }
-
-    public static <T> void getItemIntoStorage(Storage<T> storage) {
-        T value = storage.getItem();
-        System.out.println("Значение из хранилища: " + value);
-    }
-
-    public static void moveTheLine(StraightLine<?> line){
-        line.getOriginCoordinate().x += 10;
-    }
-
-    @SafeVarargs
-    public static double maxInBox(Box<? extends Number>... box){
-        double maxTemp = box[0].getItem().doubleValue();
-        for (int i = 1; i < box.length; i++){
-            double tempBoxValue = box[i].getItem().doubleValue();
-            if (maxTemp < tempBoxValue)
-                maxTemp = tempBoxValue;
-        }
-        return maxTemp;
-    }
-
-    public static void fillBoxWith3DPoint(Box<? super Point3D> box) {
-        Point3D point = new Point3D(new Random().nextInt(100), new Random().nextInt(100), new Random().nextInt(100));
-            box.setItem(point);
-    }
-
-    public static void fillList(List<? super Integer> list){
-        for (int i = 1; i <= 100; i++) {
-            list.add(i);
-        }
-    }
 }

@@ -10,4 +10,13 @@ public class ZeroOrOneMarksRule implements MarksRule{
     public int excelentMark() {
         return 1;
     }
+
+    @Override
+    public ZeroOrOneMarksRule clone() {
+        try {
+            return (ZeroOrOneMarksRule) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }
