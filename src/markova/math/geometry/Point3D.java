@@ -32,4 +32,8 @@ public final class Point3D extends Point2D
     public int hashCode() {
         return Objects.hash(super.hashCode(), z);
     }
+
+    public Point3D clone() throws CloneNotSupportedException {
+        return (Point3D) super.clone();
+    }
 }

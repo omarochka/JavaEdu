@@ -107,7 +107,7 @@ public final class Fraction extends Number implements Cloneable
     }
 
     @Override
-    public Object clone() throws CloneNotSupportedException {
-        return super.clone();
+    public Fraction clone() throws CloneNotSupportedException {
+        return (Fraction) super.clone();
     }
 }

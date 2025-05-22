@@ -33,7 +33,7 @@ public sealed class Point2D implements Cloneable permits Point3D
     }
 
     @Override
-    public Object clone() throws CloneNotSupportedException {
-        return super.clone();
+    public Point2D clone() throws CloneNotSupportedException {
+        return (Point2D) super.clone();
     }
 }

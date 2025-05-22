@@ -95,16 +95,15 @@ public class GenericUtils {
         return result;
     }
 
-    public static <T, P extends Collection<?>> P collect(
-            List<T> list,
-            Supplier<P> collectionFactory,
-            BiConsumer<P, T> elementConsumer) {
-
-        P resultCollection = collectionFactory.get();
-
-        for (T elem: list){
-            elementConsumer.accept(resultCollection, elem);
+    public static <T, P> T collect(
+            List<P> list,
+            Supplier<T> supplier,
+            BiConsumer<T, P> consumer
+    ){
+        T result = supplier.get();
+        for(var element: list){
+            consumer.accept(result, element);
         }
-        return resultCollection;
+        return result;
     }
 }

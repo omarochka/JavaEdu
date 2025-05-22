@@ -4,8 +4,8 @@ import java.util.Objects;
 
 public class StraightLine<T extends Point2D> implements LengthMeasurable, Cloneable
 {
-    private final T originCoordinate;
-    private final T finalCoordinate;
+    private T originCoordinate;
+    private T finalCoordinate;
 
     public StraightLine(T originCoordinate, T finalCoordinate)
     {
@@ -58,7 +58,10 @@ public class StraightLine<T extends Point2D> implements LengthMeasurable, Clonea
     }
 
     @Override
-    public Object clone() throws CloneNotSupportedException {
-        return super.clone();
+    public StraightLine<T> clone() throws CloneNotSupportedException {
+        StraightLine<T> sl = (StraightLine<T>) super.clone();
+        sl.finalCoordinate = (T) finalCoordinate.clone();
+        sl.originCoordinate = (T) originCoordinate.clone();
+        return sl;
     }
 }
