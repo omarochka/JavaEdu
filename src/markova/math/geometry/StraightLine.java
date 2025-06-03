@@ -2,7 +2,7 @@ package markova.math.geometry;
 
 import java.util.Objects;
 
-public class StraightLine<T extends Point2D> implements LengthMeasurable, Cloneable
+public class StraightLine<T extends Point2D> implements LengthMeasurable, Shiftable, Cloneable
 {
     private T originCoordinate;
     private T finalCoordinate;
@@ -63,5 +63,11 @@ public class StraightLine<T extends Point2D> implements LengthMeasurable, Clonea
         sl.finalCoordinate = (T) finalCoordinate.clone();
         sl.originCoordinate = (T) originCoordinate.clone();
         return sl;
+    }
+
+    @Override
+    public void shift(Coordinate coordinate, int value) {
+        originCoordinate.shift(coordinate, value);
+        finalCoordinate.shift(coordinate, value);
     }
 }

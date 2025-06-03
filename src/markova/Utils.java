@@ -42,6 +42,7 @@ public final class Utils
     public static void meowing(Meowable... meowables){
         for (Meowable value : meowables) {
             value.meow();
+            value.meow();
         }
     }
 

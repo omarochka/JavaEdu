@@ -1,8 +1,11 @@
 package markova.math.geometry.figure;
 
+import markova.math.geometry.Point2D;
+import markova.math.geometry.StraightLine;
+
 public class SquareFigure extends RectangleFigure
 {
-    public SquareFigure(double a) {
-        super(a, a);
+    public SquareFigure(Point2D upperLeftCorner, double a) {
+        super(upperLeftCorner, a, a);
     }
 }

@@ -2,7 +2,7 @@ package markova.math.geometry;
 
 import java.util.Objects;
 
-public sealed class Point2D implements Cloneable permits Point3D
+public sealed class Point2D implements Cloneable, Shiftable permits Point3D
 {
     public int x;
     public int y;
@@ -35,5 +35,19 @@ public sealed class Point2D implements Cloneable permits Point3D
     @Override
     public Point2D clone() throws CloneNotSupportedException {
         return (Point2D) super.clone();
+    }
+
+    @Override
+    public void shift(Coordinate coordinate, int value) {
+        switch (coordinate) {
+            case X:
+                this.x += value;
+                break;
+            case Y:
+                this.y += value;
+                break;
+            default:
+                throw new IllegalArgumentException("Invalid coordinate for Point2D: " + coordinate);
+        }
     }
 }

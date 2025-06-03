@@ -1,6 +1,8 @@
 package markova.math.geometry.figure;
 
-public abstract class Figure
+import markova.math.geometry.Shiftable;
+
+public abstract class Figure implements Shiftable
 {
     public abstract double findArea();
 }

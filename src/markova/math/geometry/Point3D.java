@@ -36,4 +36,19 @@ public final class Point3D extends Point2D
     public Point3D clone() throws CloneNotSupportedException {
         return (Point3D) super.clone();
     }
+
+    @Override
+    public void shift(Coordinate coordinate, int value) {
+        switch (coordinate) {
+            case X:
+            case Y:
+                super.shift(coordinate, value);
+                break;
+            case Z:
+                this.z += value;
+                break;
+            default:
+                throw new IllegalArgumentException("Invalid coordinate for Point3D: " + coordinate);
+        }
+    }
 }

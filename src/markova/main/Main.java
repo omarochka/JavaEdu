@@ -1,10 +1,13 @@
 package markova.main;
 
-import markova.creature.human.Human;
-import markova.storeItems.Storage;
-
-import java.util.ArrayList;
-import java.util.List;
+import markova.Utils;
+import markova.creature.Cat;
+import markova.creature.Catdog;
+import markova.creature.Meowable;
+import markova.math.geometry.*;
+import markova.math.geometry.figure.SquareFigure;
+import markova.wrapers.ProxyCatCountMeow;
+import markova.wrapers.ProxyCatSawOink;
 
 public class Main
 {
@@ -24,6 +27,7 @@ public class Main
 //
 
         // Сделать обсервер
+
 
     }
 }
