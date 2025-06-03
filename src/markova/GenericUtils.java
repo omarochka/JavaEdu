@@ -2,6 +2,7 @@ package markova;
 
 import markova.generalInterfaces.Applyable;
 import markova.generalInterfaces.Testable;
+import markova.math.geometry.Point2D;
 import markova.math.geometry.Point3D;
 import markova.math.geometry.StraightLine;
 import markova.storeItems.Box;
@@ -32,7 +33,7 @@ public class GenericUtils {
         System.out.println("Значение из хранилища: " + value);
     }
 
-    public static void moveTheLine(StraightLine<?> line){
+    public static <T extends Point2D> void  moveTheLine(StraightLine<T> line){
         line.getOriginCoordinate().x += 10;
     }
 
@@ -95,6 +96,7 @@ public class GenericUtils {
         return result;
     }
 
+    //TODO predicate, function, supplier, BiConsumer
     public static <T, P> T collect(
             List<P> list,
             Supplier<T> supplier,

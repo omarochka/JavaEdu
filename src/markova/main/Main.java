@@ -1,29 +1,29 @@
 package markova.main;
 
+import markova.creature.human.Human;
+import markova.storeItems.Storage;
+
+import java.util.ArrayList;
 import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.BinaryOperator;
-import java.util.function.Supplier;
 
 public class Main
 {
     public static void main(String[] args)
     {
-//        6.3.4
-//        List<Integer> numberList = Arrays.asList(1, -3, 7, -2, 0, 5, -8);
+//        Human h = Human.builder()
+//                .setfName("asdf")
+//                .setlName("sdf")
+//                .build();
 //
-//        Supplier<List<List<Integer>>> sublists = () -> Arrays.asList(new ArrayList<>(), new ArrayList<>());
-//        BiConsumer<List<List<Integer>>, Integer> numberSplitter = (lists, num) -> {
-//            if (num >= 0) {
-//                lists.get(0).add(num);
-//            } else {
-//                lists.get(1).add(num);
-//            }
-//        };
 //
-//        System.out.println(
-//                GenericUtils.collect(numberList, sublists, numberSplitter)
-//        );
+//        List<Integer> lst = List.of(6, 1, 3, 5, 6, 2, 3 ,4 ,5);
+//        double a = lst.stream()
+//                .map(x -> Double.valueOf(x))
+//                .filter(x -> x > 2)
+//                .reduce(0D, (x, y) -> x + y);
+//
+
+        // Сделать обсервер
 
     }
 }
